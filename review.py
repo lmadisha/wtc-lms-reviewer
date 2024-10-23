@@ -33,7 +33,7 @@ class Review:
         self.emails = []
         self.git_names = []
         self.projects = []
-        self.path = os.path.expanduser("~") + f'/Desktop/work/review/{self.user_input_review}'
+        self.path = os.path.expanduser("~") + f'/Desktop/WTC/review/{self.user_input_review}'
 
     def get_reviews(self):
         """
@@ -62,5 +62,18 @@ class Review:
                     self.edited_reviews.append(review.decode("utf-8"))
 
         return self.edited_reviews
-    
-    
+
+    def get_activity_reviews(self):
+        self.user_input_review = input("Enter the activity you want to review: ")
+
+        user_review = [rev for rev in self.edited_reviews if self.user_input_review in rev]
+
+        print(f"The activity you wanted to review was {self.user_input_review}\nThere are {len(user_review)} reviews."
+              f"\nHere is a list:")
+
+        pprint.pprint(user_review)
+
+        if len(self.user_input_review.split(" ")) > 1:
+            self.user_input_review = ("-".join(self.user_input_review.split(" "))).lower()
+
+        return self.user_input_review
