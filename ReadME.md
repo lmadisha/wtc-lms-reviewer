@@ -21,12 +21,36 @@ As you can expect this is a tedious and time-consuming process and you have to d
 ## This is a step-by-step process of how the project works
 ___
 
-
-
-<br>
+1. ![login to lms](pictures/login_first_0.png) <br>
+First login into lms before starting program.
+2. ![review collector](pictures/reviews_called_1.png) <br>
+   Once the program runs it will collect and display all the reviews that need to be reviewed [Invited].
+3. ![select task to review](pictures/review_selection_2.png) <br>
+   You'll be prompted which project name you want to review.
+4. ![select uuid](pictures/review_selector_3.png) <br>
+   If you left the first prompt empty then you'll get prompted to give three uuid of the projects you want to review and what you want to call the review project for directory naming purpose.
+5. ![random 3 UUID](pictures/reviewer_collector_id_4.png) <br>
+   The program will grab three random uuid for you to review.
+6. ![Directory created](pictures/directory_called_5.png) <br>
+   The program will then create a directory at your desktop called 'WTC/review/'.
+7. ![lms commands](pictures/lms_reviewer_part_6.png) <br>
+   This part is where the program access the lms and runs the commands for the reviews.
+8. ![project name, git names, emails](pictures/reviewer_information_7.png) <br>
+   The program stores the projects name, git repository of the projects and the emails of each review.
+9. ![git clones](pictures/reviewer_cloning_8.png) <br>
+   The program then clones the projects into the '/Desktop/WTC/review/{review_name}/' directory.
+10. ![completed review](pictures/reviewer_completed_9.png) <br>
+    The program runs it final execution which is writing to a textfile then outputs completed review! with exit code 0. Which means success.
+11. ![directory of review 1](pictures/reviewer_directory_created_output_10.png) <br> ![directory of review 2](pictures/reviewer_directory_created_output_11.png) <br> ![directory of review 2](pictures/reviewer_directory_created_output_12.png) <br>
+    You can navigate to your desktop and see the directory.
+12. ![textfile](pictures/reviewer_textfile.png) <br>
+    You can open the text file and use the information to email or slack the person you reviewed.
+13. Automated review slack messages coming soon!!
 
 ___
 Creator: ***[Legae/Lego](https://github.com/lmadisha)*** 
 <br>
-Corporation: ***[WeThinkCode](https://wethinkcode.co.za)*** 
+Corporation: ***[WeThinkCode](https://wethinkcode.co.za)***
+<br>
+Any improvements is welcomed, first fork the repo then add all functions and detailed explanation of what it does.
 ___
