@@ -1,9 +1,7 @@
 import os
 import pprint
 from subprocess import PIPE, Popen
-
 from review_maker import edited_reviews
-
 
 def cmdline(command):
     process = Popen(
@@ -77,3 +75,12 @@ class Review:
             self.user_input_review = ("-".join(self.user_input_review.split(" "))).lower()
 
         return self.user_input_review
+
+    def get_three_uid(self):
+        check_on = True
+        review_gathered = []
+        user_input_review_page = []
+
+        if not self.user_review or self.user_input_review == "":
+            user_input_review_page = input("Please enter three uuid that you want to review (Please seperate by space): ").split(" ", maxsplit=3)
+            check_on = False
