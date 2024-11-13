@@ -1,5 +1,7 @@
 import os
 import random
+import subprocess
+import sys
 from pathlib import Path
 import pprint
 from subprocess import PIPE, Popen
@@ -22,16 +24,17 @@ def is_duplicate(anylist: list) -> bool | str:
     else:
         return False
 
+def exit_program():
+    print("Exiting the program...")
+    sys.exit(0)
+
 #<-----------------------------------------------Get the reviews---------------------------------------------------->
+command = ["wtc-lms reviews"]
+command_output = subprocess.check_output(command, shell=True, text=True)
 
-
-reviews = cmdline("wtc-lms reviews").splitlines()
-
-for n in reviews:
-    if "Please login using" in n.decode("utf-8"):
-        print("First login into the terminal.")
-        exit(0)
-        # os.system("echo 'Madisha2004' | wtc-lms login")
+if "Please login using" in command_output:
+    print("First login into the terminal.")
+    exit_program()
 
 reviews = cmdline("wtc-lms reviews").splitlines()
 
@@ -72,8 +75,9 @@ user_input_review_page = []
 if not user_review or user_input_review == "":
     user_input_review_page = input("Please enter three uuid that you want to review (Please seperate by space): ").split(" ", maxsplit=3)
     check_on = False
-
-user_input_review = input("Enter the activity you want to call the review: ")
+    user_input_review = input("Enter the activity you want to call the review: ")
+    if len(user_input_review.split(" ")) > 1:
+        user_input_review = ("-".join(user_input_review.split(" "))).lower()
 
 while check_on:
     print("Started process where program selects three random uuid...\n")
@@ -99,7 +103,7 @@ if review_gathered:
 
 print(f"The activity user wanted is: {user_input_review}\nThe three selected UUID are: {user_input_review_page}\n")
 
-path = os.path.expanduser("~") + f'/Desktop/work/review/{user_input_review}'
+path = os.path.expanduser("~") + f'/Desktop/WTC/review/{user_input_review}'
 
 if os.path.exists(path):
     print("The path exists: ", path, end="\n")
@@ -169,7 +173,7 @@ try:
         for i in range(0, len(projects)):
             file_txt.write(f"{i+1}. {user_input_review_page[i]} + {emails[i]} + {projects[i]} + {git_names[i]} = Done\n")
 
-except FileNotFoundError or FileExistsError as e:
+except (FileNotFoundError, FileExistsError) as e:
     print(f'An error occurred: {e}')
 
 else:
