@@ -18,8 +18,10 @@ ___
 
 As you can expect this is a tedious and time-consuming process and you have to do it three times. This projects aims to cut down on this problem by automating the process.
 
-## This is a step by step process of how the project works
+## This is a step-by-step process of how the project works
 ___
+
+
 
 <br>
 
